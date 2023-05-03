@@ -1,8 +1,7 @@
-package com.example.DataAnalysisPractice.member;
+package com.example.DataAnalysisPractice.memory.member;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;

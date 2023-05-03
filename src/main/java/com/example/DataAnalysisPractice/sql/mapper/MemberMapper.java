@@ -1,10 +1,9 @@
-package com.example.DataAnalysisPractice.member;
+package com.example.DataAnalysisPractice.sql.mapper;
 
+import com.example.DataAnalysisPractice.memory.member.Member;
 import org.apache.ibatis.annotations.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Mapper
 public interface MemberMapper {

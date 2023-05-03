@@ -1,4 +1,4 @@
-package com.example.DataAnalysisPractice.member;
+package com.example.DataAnalysisPractice.memory.member;
 
 import lombok.Getter;
 import lombok.Setter;

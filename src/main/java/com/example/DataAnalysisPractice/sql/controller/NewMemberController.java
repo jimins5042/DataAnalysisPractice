@@ -1,9 +1,7 @@
-package com.example.DataAnalysisPractice.Controller;
+package com.example.DataAnalysisPractice.sql.controller;
 
-import com.example.DataAnalysisPractice.member.Member;
-import com.example.DataAnalysisPractice.member.MemberRepository;
-import com.example.DataAnalysisPractice.service.MemberService;
-import jakarta.annotation.PostConstruct;
+import com.example.DataAnalysisPractice.memory.member.Member;
+import com.example.DataAnalysisPractice.sql.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -14,16 +12,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Slf4j
-//@Controller
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("basic/items")
-public class MemberController {
+public class NewMemberController {
 
-    private final MemberRepository memberRepository;
+    private final MemberService memberService;
 
     @GetMapping
     public String items(Model model) {
-        List<Member> members = memberRepository.findAll();
+        List<Member> members = memberService.findAll();
 
         /*
         1. model에 members값을 담아 view로 전달
@@ -37,7 +35,7 @@ public class MemberController {
 
     @GetMapping("/{memberId}")
     public String item(@PathVariable long memberId, Model model) {
-        Member member = memberRepository.findById(memberId);
+        Member member = memberService.findById(memberId);
         model.addAttribute("member", member);
         return "basic/item";
     }
@@ -51,7 +49,8 @@ public class MemberController {
     public String addItemV6(@ModelAttribute Member member, RedirectAttributes redirectAttributes) {
         // 클래스 첫 글자를 소문자로 변환해주는 것이 값에 들어감
 
-        Member savedMember = memberRepository.save(member);
+        Member savedMember = memberService.save(member);
+        log.info("확인용 id : " + savedMember.getId());
         redirectAttributes.addAttribute("memberId", savedMember.getId());
         redirectAttributes.addAttribute("status", true);
 
@@ -61,28 +60,28 @@ public class MemberController {
     @GetMapping("/{memberId}/edit")
     public String editForm(@PathVariable Long memberId, Model model) {
 
-        Member member = memberRepository.findById(memberId);
+        Member member = memberService.findById(memberId);
         model.addAttribute("member", member);
         return "basic/editForm";
     }
 
     @PostMapping("/{memberId}/edit")
     public String edit(@PathVariable Long memberId, @ModelAttribute Member item) {
-        memberRepository.update(memberId, item);
+        memberService.update(memberId, item);
         return "redirect:/basic/items/{memberId}";
     }
 
     @GetMapping("/{memberId}/delete")
     public String deleteItem(@PathVariable Long memberId) {
-        memberRepository.delete(memberId);
+        memberService.delete(memberId);
         return "redirect:/basic/items";
     }
 
     //테스트용 데이터
-    @PostConstruct
+    //@PostConstruct
     public void init() {
-        memberRepository.save(new Member("name1", 1, 17, "010-1234-1234", "대전"));
-        memberRepository.save(new Member("name2", 2, 27, "010-5678-1234", "서울"));
+        memberService.save(new Member("name1", 1, 17, "01012341234", "대전"));
+        memberService.save(new Member("name2", 2, 27, "01056781234", "서울"));
     }
 
 }
