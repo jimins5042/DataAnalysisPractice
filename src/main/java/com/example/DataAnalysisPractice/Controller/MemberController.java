@@ -2,6 +2,7 @@ package com.example.DataAnalysisPractice.Controller;
 
 import com.example.DataAnalysisPractice.member.Member;
 import com.example.DataAnalysisPractice.member.MemberRepository;
+import com.example.DataAnalysisPractice.service.MemberService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Slf4j
-@Controller
+//@Controller
 @RequiredArgsConstructor
 @RequestMapping("basic/items")
 public class MemberController {

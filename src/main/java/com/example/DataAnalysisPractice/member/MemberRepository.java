@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class MemberRepository {
     private static final Map<Long, Member> store = new HashMap<>();
