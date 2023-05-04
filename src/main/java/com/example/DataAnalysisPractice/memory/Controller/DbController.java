@@ -13,7 +13,7 @@ public class DbController {
 
     @GetMapping("/test")
     public String  test(){
-        memberService.getTime();
+
         return "/index";
     }
 

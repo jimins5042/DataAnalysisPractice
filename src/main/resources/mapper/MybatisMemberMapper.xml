@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--ItemMapper의 위치를 적어줌-->
+<!--경로 구분할때 /가 아니라 .으로 구분!-->
+<mapper namespace="com.example.DataAnalysisPractice.sql.mapper.MybatisMemberMapper">
+
+    <!--아이템 객체의 속성 값들을 넣어줌-->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into memberinfo(name, phone_number, sex, age, location)
+        values (#{name}, #{phoneNumber}, #{sex}, #{age}, #{location})
+    </insert>
+
+    <select id="getId" resultType="Member">
+        select *
+        from memberinfo
+        order by id DESC limit 1
+    </select>
+
+    <select id="findById" resultType="Member">
+        select id, name, phone_number, sex, age, location
+        from memberinfo
+        where id = #{id}
+    </select>
+
+    <!--resultType: 조회하는 item의 경로를 적어주어야 하나, application.properties에 경로를 넣어준만큼 생략가능-->
+    <select id="findAll" resultType="Member">
+        select id, name, phone_number, sex, age, location
+        from memberinfo
+    </select>
+
+    <update id="update">
+        update memberinfo
+        set name=#{updateParam.name},
+            phone_number=#{updateParam.phoneNumber},
+            sex=#{updateParam.sex},
+            age=#{updateParam.age},
+            location=#{updateParam.location}
+        where id = #{memberId}
+    </update>
+
+    <delete id="delete">
+        delete
+        from memberinfo
+        where id = #{memberId}
+    </delete>
+
+</mapper>

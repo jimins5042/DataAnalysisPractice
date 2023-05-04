@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("basic/items")
-public class NewMemberController {
+public class SecondMemberController {
 
     private final MemberService memberService;
 

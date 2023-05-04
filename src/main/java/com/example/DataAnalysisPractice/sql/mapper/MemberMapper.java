@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-@Mapper
+//@Mapper
 public interface MemberMapper {
     @Select("now")
     String getTime();

@@ -2,6 +2,7 @@ package com.example.DataAnalysisPractice.sql.service;
 
 import com.example.DataAnalysisPractice.memory.member.Member;
 import com.example.DataAnalysisPractice.sql.mapper.MemberMapper;
+import com.example.DataAnalysisPractice.sql.mapper.MybatisMemberMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,14 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MemberService {
-    private final MemberMapper memberMapper;
+    private final MybatisMemberMapper memberMapper;
 
+    /*
     public void getTime() {
         memberMapper.getTime();
         log.info("현재 시간 = " + memberMapper.getTime());
     }
+*/
 
     public Member save(Member member) {
         Member findMember = member;
